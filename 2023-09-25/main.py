@@ -1,6 +1,6 @@
 import requests
 
-link = "https://www.metasrc.com/lol/stats"
+link = "https://www.metasrc.com/lol/13.19/stats?ranks=master,grandmaster,challenger"
 champFind = '<td class=" _byr3u7 _fs7qiw champ">'
 afterRole = '</div>'
 percentSeperator = '</td><td class=" _byr3u7 _dbz54g">'
@@ -55,7 +55,8 @@ while True:
     br = float(br)
 
     print(f"{role}: WR{wr}, PR{pr}, BR{br}")
-    SCORES[role] += pow(wr - 50.0, 2) * (pr / 100)
+    SCORES[role] += pow(wr - 50.0, 2) * pr
 
+mx = max(SCORES.values())
 for key, value in SCORES.items():
-    print("{0}: {1:0.2f}".format(key, value))
+    print("{0}: {1:0.2f}".format(key, value/mx))
