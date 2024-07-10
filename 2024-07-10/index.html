@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <title>Visited Places</title>
+    <script src="d3/d3.v3.min.js"></script>
+    <script src="d3/topojson.v1.min.js"></script>
+    <script src="datamaps/datamaps.world.min.js"></script>
+</head>
+<body>
+    <div id="map1" style="position: relative;"></div>
+    <label id="visitedPercentage" style="position:fixed;right:0;bottom:0;font-weight:bold;"></label>
+
+    <script src="countries.js"></script>
+    <script src="places.js"></script>
+
+    <script>
+
+    var totalCountries = 249;
+    var visited = Object.keys(COUNTRIES).length;
+    document.getElementById("visitedPercentage").innerText = (Math.round(visited / totalCountries * 100 * 100) / 100).toString() + "%";
+
+    var map = new Datamap({
+        scope: 'world',
+        element: document.getElementById('map1'),
+        projection: 'mercator',
+        responsive: true,
+        height: 700,
+        fills: {
+            defaultFill: '#D0D0D0',
+            visited: '#418c08',
+            city: '#000000',
+            mountain: '#EB9B34'
+        },
+        geographyConfig: {
+            highlightOnHover: true,
+            highlightFillColor: '#A0C0A0',
+            highlightBorderColor: '#418c08',
+            popupOnHover: true,
+            popupTemplate: function(geography, data) {
+                return '<div class="hoverinfo"><b>' + geography.properties.name + '</b></div>';
+            },
+        },
+        bubblesConfig: {
+            borderWidth: 1,
+            borderColor: '#FFFFFF',
+            highlightOnHover: true,
+            popupOnHover: true,
+            highlightFillColor: '#FF0000',
+            popupTemplate: function(geo, data) {
+                return "<div class='hoverinfo'>" + data.name + "</div>";
+            }
+        },
+
+        data: COUNTRIES
+    });
+
+    map.bubbles(PLACES);
+
+    window.addEventListener('resize', function() {
+        map.resize();
+    });
+
+    </script>
+</body>
