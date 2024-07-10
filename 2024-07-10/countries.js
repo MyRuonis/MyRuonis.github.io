@@ -14,4 +14,5 @@ COUNTRIES =
     SVN: {fillKey: 'visited'},
     HUN: {fillKey: 'visited'},
     KOR: {fillKey: 'visited'},
+    ISL: {fillKey: 'visited'},
 }
