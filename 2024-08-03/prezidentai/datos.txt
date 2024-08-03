@@ -1,0 +1,11 @@
+Smetona 1874-08-10
+Stulginskis 1885-02-26
+Grinius 1866-12-17
+Jonas Žemaitis 1909-03-15
+Brazauskas 1932-09-22
+Adamkus 1926-11-03
+Paksas 1956-06-10
+Grybauskaite 1956-03-01
+Nausėda 1964-05-19
+
+0, 1, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="index.css" rel='stylesheet' type='text/css'>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+
+<canvas id="gimstamumas9403"></canvas>
+<canvas id="gimstamumas0413"></canvas>
+<canvas id="gimstamumas1423"></canvas>
+<canvas id="gimstamumas9423"></canvas>
+<canvas id="prezidentai"></canvas>
+<canvas id="seimas"></canvas>
+<canvas id="lkl"></canvas>
+<canvas id="aLyga"></canvas>
+<canvas id="palyginimas"></canvas>
+
+<script>
+const xValues = ["Sausis", "Vasaris", "Kovas", 
+                 "Balandis", "Gegužė", "Birželis",
+                 "Liepa", "Rugpjūtis", "Rugsėjis", 
+                 "Spalis", "Lapkritis", "Gruodis"]; 
+const barColors = ["rgba(0, 136, 255, 1)", "rgba(23, 124, 232, 1)", "rgba(46, 111, 209, 1)", 
+                    "rgba(70, 99, 185, 1)", "rgba(93, 87, 162, 1)", "rgba(116, 74, 139, 1)",
+                    "rgba(139, 62, 116, 1)", "rgba(162, 49, 93, 1)", "rgba(185, 37, 70, 1)",
+                    "rgba(209, 25, 46, 1)", "rgba(232, 12, 23, 1)", "rgba(255, 0, 0, 1)",];
+
+createChart("gimstamumas9403", "Gimstamumas 1994-2003", [29705, 27915, 31944, 31566, 32857, 31064, 32867, 30292, 28929, 28001, 26172, 27423]);
+createChart("gimstamumas0413", "Gimstamumas 2004-2013", [25279, 22948, 25269, 24708, 25775, 25857, 28217, 27092, 25910, 24916, 23951, 23972]);
+createChart("gimstamumas1423", "Gimstamumas 2014-2023", [21766, 19697, 22164, 21732, 23670, 23329, 25074, 24132, 23982, 21939, 20269, 19450]);
+createChart("gimstamumas9423", "Gimstamumas 1994-2023", [76750, 70560, 79377, 78006, 82302, 80250, 86158, 81516, 78821, 74856, 70392, 70845]);
+createChart("prezidentai", "Lietuvos prezidentai", [0, 1, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1])
+createChart("lkl", "LKL (lietuviai)", [10, 8, 13, 8, 8, 6, 7, 4, 6, 3, 6, 1])
+createChart("aLyga", "A Lyga (lietuviai)", [12, 10, 13, 19, 12, 23, 18, 12, 7, 7, 5, 10])
+createChart("seimas", "Seimo nariai", [15, 5, 13, 13, 12, 15, 10, 14, 12, 7, 11, 8])
+
+new Chart("palyginimas", {
+    type: "bar",
+    data: {
+      labels: ["Seimas 1-6", "Seimas 7-12", "LKL 1-6", "LKL 7-12", "A Lyga 1-6", "A Lyga 7-12"],
+      datasets: [{
+        backgroundColor: ["rgba(0, 136, 255, 1)", "rgba(46, 111, 209, 1)", "rgba(93, 87, 162, 1)",
+                          "rgba(139, 62, 116, 1)", "rgba(185, 37, 70, 1)", "rgba(232, 12, 23, 1)"],
+        data: [73, 62, 53, 27, 89, 59]
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "Palyginimas"
+      },
+      scales: {
+          yAxes: [{
+                  display: true,
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+      },
+    }
+  });
+
+function createChart(label, title, yValues) {
+    new Chart(label, {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          legend: {display: false},
+          title: {
+            display: true,
+            text: title
+          },
+          scales: {
+              yAxes: [{
+                      display: true,
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+          },
+        }
+      });
+}
+</script>
+
+</body>
+</html>
