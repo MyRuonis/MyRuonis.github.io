@@ -17,7 +17,7 @@
 
     var totalCountries = 249;
     var visited = Object.keys(COUNTRIES).length;
-    document.getElementById("visitedPercentage").innerText = (Math.round(visited / totalCountries * 100 * 100) / 100).toString() + "%";
+    document.getElementById("visitedPercentage").innerText = (Math.round(visited / totalCountries * 100 * 100) / 100).toString() + "% (" + visited.toString() + "/" + totalCountries.toString() + ")";
 
     var map = new Datamap({
         scope: 'world',

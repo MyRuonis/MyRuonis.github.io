@@ -15,4 +15,5 @@ COUNTRIES =
     HUN: {fillKey: 'visited'},
     KOR: {fillKey: 'visited'},
     ISL: {fillKey: 'visited'},
+    NLD: {fillKey: 'visited'},
 }
