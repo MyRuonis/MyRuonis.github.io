@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="index.css" rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar nav-fill navbar-expand-xl navbar-dark bg-dark w-100">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary">Score <a id="score">0</a>
+        </button>
+        <button type="button" onclick="sessionStorage.setItem(filterCookie, 'all');update();" class="btn btn-secondary">All</button>
+        <button type="button" onclick="sessionStorage.setItem(filterCookie, 'done');update();" class="btn btn-success">Finished</button>
+        <button type="button" onclick="sessionStorage.setItem(filterCookie, 'todo');update();" class="btn btn-danger">TODO</button>
+      </div>
+    </nav>
+    <div class="table-responsive">
+      <table id="myTable" class="table">
+        <tr>
+          <td>Achluophobia</td>
+          <td>fear of darkness</td>
+          <td>3 minutes eit miške tiesiai be šviesos</td>
+        </tr>
+        <tr>
+          <td>Acousticophobia</td>
+          <td>fear of noise – a branch of phonophobia</td>
+          <td>Leisti surėkt kitam žmogui tau į ausį</td>
+        </tr>
+        <tr>
+          <td>Acrophobia</td>
+          <td>fear of heights</td>
+          <td>Haikas į kalnus</td>
+        </tr>
+        <tr>
+          <td>Aerophobia</td>
+          <td>fear of aircraft or flying</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Agoraphobia</td>
+          <td>fear of certain inescapable/unsafe situations</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Agyrophobia</td>
+          <td>fear of crossing streets</td>
+          <td>Pereik gatvę per raudoną</td>
+        </tr>
+        <tr>
+          <td>Aichmophobia</td>
+          <td>fear of sharp or pointed objects such as needles, pins or knives</td>
+          <td>Paliest peilio ašmenis pirštais</td>
+        </tr>
+        <tr>
+          <td>Ailurophobia</td>
+          <td>fear/dislike of cats, a zoophobia</td>
+          <td>Paliest katę</td>
+        </tr>
+        <tr>
+          <td>Alektorophobia</td>
+          <td>fear/dislike of chickens, a zoophobia</td>
+          <td>Paliest vištą</td>
+        </tr>
+        <tr>
+          <td>Anatidaephobia</td>
+          <td>fear/dislike of ducks, a zoophobia</td>
+          <td>Paliest antį</td>
+        </tr>
+        <tr>
+          <td>Algophobia</td>
+          <td>fear of pain</td>
+          <td>Slapas</td>
+        </tr>
+        <tr>
+          <td>Alliumphobia</td>
+          <td>fear/dislike of Allium plants, including garlic, onions, chives, and shallots</td>
+          <td>Atsikąst svogūną</td>
+        </tr>
+        <tr>
+          <td>Ancraophobia</td>
+          <td>fear of wind or drafts</td>
+          <td>Būt vietovėj su stipriu vėju</td>
+        </tr>
+        <tr>
+          <td>Androphobia</td>
+          <td>fear of adult men</td>
+          <td>Paspaust ranką 35+ čiuvui</td>
+        </tr>
+        <tr>
+          <td>Anthropophobia</td>
+          <td>fear of human beings</td>
+          <td>Paklaust nepažįstamojo klausimo</td>
+        </tr>
+        <tr>
+          <td>Apeirophobia</td>
+          <td>excessive fear of infinity, eternity, and the uncountable</td>
+          <td>5min stebėti dangų</td>
+        </tr>
+        <tr>
+          <td>Aphenphosmpho..</td>
+          <td>fear of being touched</td>
+          <td>Būk pakutentas</td>
+        </tr>
+        <tr>
+          <td>Apiphobia</td>
+          <td>fear of bees, a zoophobia</td>
+          <td>Paliest bitę</td>
+        </tr>
+        <tr>
+          <td>Apotemnophobia</td>
+          <td>fear of amputees, and/or of becoming an amputee</td>
+          <td>Pasisveikint su begalūniu</td>
+        </tr>
+        <tr>
+          <td>Aquaphobia</td>
+          <td>fear of water. Distinct from hydrophobia, a scientific property that makes chemicals averse to interaction with water, as well as an archaic name for rabies.</td>
+          <td>Nusimaudyt natūraliam vandens telkiny</td>
+        </tr>
+        <tr>
+          <td>Arachnophobia</td>
+          <td>fear of spiders and other arachnids such as scorpions, a zoophobia</td>
+          <td>Paliest vorą</td>
+        </tr>
+        <tr>
+          <td>Asiophobia</td>
+          <td>fear/dislike of the asians</td>
+          <td>Pasisveikint</td>
+        </tr>
+        <tr>
+          <td>Astraphobia</td>
+          <td>fear of thunder and lightning</td>
+          <td>Išgirst ir pamatyt griaustinį</td>
+        </tr>
+        <tr>
+          <td>Atelophobia</td>
+          <td>fear of imperfection</td>
+          <td>Paklaust ir išklausyt minuso apie save</td>
+        </tr>
+        <tr>
+          <td>Athazagorapho..</td>
+          <td>fear of forgetting, forgetfulness and/or being forgotten</td>
+          <td>Paklausk savo gimtadienio to kuris nežino</td>
+        </tr>
+        <tr>
+          <td>Atychiphobia</td>
+          <td>fear of failure or negative evaluations of others</td>
+          <td>Gaut užduotį iš kito kurios nesugebėsi padaryt</td>
+        </tr>
+        <tr>
+          <td>Autophobia</td>
+          <td>fear of isolation</td>
+          <td>Tūlike 10min</td>
+        </tr>
+        <tr>
+          <td>Bacteriophobia</td>
+          <td>fear of bacteria</td>
+          <td>Nenusiplaut rankų po tūliko</td>
+        </tr>
+        <tr>
+          <td>Basophobia</td>
+          <td>basiphobia,fear associated with astasia-abasia (fear of walking/standing erect) and a fear of falling</td>
+          <td>Atsistot</td>
+        </tr>
+        <tr>
+          <td>Batrachophobia</td>
+          <td>fear/dislike of frogs and other amphibians, a zoophobia</td>
+          <td>Paliest varlę</td>
+        </tr>
+        <tr>
+          <td>Belonephobia</td>
+          <td>fear of needles or pins</td>
+          <td>Įsidurt su adata/smeigtuku</td>
+        </tr>
+        <tr>
+          <td>Bibliophobia</td>
+          <td>fear of books</td>
+          <td>Atsiverst knygą</td>
+        </tr>
+        <tr>
+          <td>Blood-injecti..</td>
+          <td>a DSM-IV subtype of specific phobias</td>
+          <td>Bloodbond</td>
+        </tr>
+        <tr>
+          <td>Cacophobia</td>
+          <td>aschimophobia,fear of ugliness</td>
+          <td>Pažiūrėt į kito surastą nuotrauką</td>
+        </tr>
+        <tr>
+          <td>Carcinophobia</td>
+          <td>fear of cancer</td>
+          <td>Parūkyt cigariuką</td>
+        </tr>
+        <tr>
+          <td>Catoptrophobia</td>
+          <td>fear of mirrors</td>
+          <td>Pažiūrėt į veidrodį</td>
+        </tr>
+        <tr>
+          <td>Cephalalgiaph..</td>
+          <td>fear of headaches</td>
+          <td>Turėt galvos skausmą</td>
+        </tr>
+        <tr>
+          <td>Chemophobia</td>
+          <td>fear of chemicals</td>
+          <td>Paliest dirginančią medžiagą</td>
+        </tr>
+        <tr>
+          <td>Cherophobia</td>
+          <td>fear of happiness</td>
+          <td>Nusijuokt</td>
+        </tr>
+        <tr>
+          <td>Chionophobia</td>
+          <td>fear of snow</td>
+          <td>Paliest sniegą</td>
+        </tr>
+        <tr>
+          <td>Chiroptophobia</td>
+          <td>fear/dislike of bats, a zoophobia</td>
+          <td>Paliest šikšnosparnį</td>
+        </tr>
+        <tr>
+          <td>Chromophobia</td>
+          <td>chromatophobia,fear of colors</td>
+          <td>Pamatyt vaivorykštę</td>
+        </tr>
+        <tr>
+          <td>Chronophobia</td>
+          <td>fear of time and time moving forward</td>
+          <td>Paklaust kiek valandų</td>
+        </tr>
+        <tr>
+          <td>Chronomentrop..</td>
+          <td>fear of clocks</td>
+          <td>Paliest laikrodį</td>
+        </tr>
+        <tr>
+          <td>Cibophobia</td>
+          <td>sitophobia,aversion to food, synonymous with anorexia nervosa</td>
+          <td>Sočiai pavalgyt</td>
+        </tr>
+        <tr>
+          <td>Claustrophobia</td>
+          <td>fear of having no escape and being closed in</td>
+          <td>Būt uždarytam bagažinėj</td>
+        </tr>
+        <tr>
+          <td>Coimetrophobia</td>
+          <td>fear of cemeteries</td>
+          <td>Apsilankyti kapinėse</td>
+        </tr>
+        <tr>
+          <td>Coprophobia</td>
+          <td>fear of feces or defecation</td>
+          <td>Paliest kaką</td>
+        </tr>
+        <tr>
+          <td>Coulrophobia</td>
+          <td>fear of clowns</td>
+          <td>Pasisveikint su klounu</td>
+        </tr>
+        <tr>
+          <td>Cyberphobia</td>
+          <td>fear of computers</td>
+          <td>Paliest kompą</td>
+        </tr>
+        <tr>
+          <td>Cynophobia</td>
+          <td>fear/dislike of dogs, a zoophobia</td>
+          <td>Paliest šunį</td>
+        </tr>
+        <tr>
+          <td>Dendrophobia</td>
+          <td>fear of trees</td>
+          <td>Apkabinti medį</td>
+        </tr>
+        <tr>
+          <td>Dentophobia</td>
+          <td>fear of dentists</td>
+          <td>Užeit pas dantistą</td>
+        </tr>
+        <tr>
+          <td>Diagraphephobia</td>
+          <td>fear of deleting files or an extreme fear of losing your computer data.</td>
+          <td>Duot draugeliui ištrint ką nors telefone tau nežinant</td>
+        </tr>
+        <tr>
+          <td>Domatophobia</td>
+          <td>fear of houses</td>
+          <td>Įeit į namą</td>
+        </tr>
+        <tr>
+          <td>Driving phobia</td>
+          <td>driving anxiety,fear of driving</td>
+          <td>Pavairuot</td>
+        </tr>
+        <tr>
+          <td>Dysmorphophobia</td>
+          <td>body dysmorphic disorder,a phobic obsession with a real or imaginary body defect</td>
+          <td>Pasakyt kitiem savo kūno defektą</td>
+        </tr>
+        <tr>
+          <td>Dystichiphobia</td>
+          <td>fear of being involved in an accident</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Ecophobia</td>
+          <td>fear of cataclysmic environmental change</td>
+          <td>Neteisingai surūšiuot šiukšlę</td>
+        </tr>
+        <tr>
+          <td>Emetophobia</td>
+          <td>fear of vomiting</td>
+          <td>Vemt</td>
+        </tr>
+        <tr>
+          <td>Entomophobia</td>
+          <td>fear/dislike of insects, a zoophobia</td>
+          <td>Paliest vabalą</td>
+        </tr>
+        <tr>
+          <td>Ephebiphobia</td>
+          <td>fear of youth</td>
+          <td>Paliest vaiką</td>
+        </tr>
+        <tr>
+          <td>Equinophobia</td>
+          <td>fear of horses</td>
+          <td>Paliest arklį</td>
+        </tr>
+        <tr>
+          <td>Ergophobia</td>
+          <td>ergasiophobia,fear of work or functioning, or a surgeon's fear of operating</td>
+          <td>Skirt 10min savo darbui</td>
+        </tr>
+        <tr>
+          <td>Erotophobia</td>
+          <td>fear of sexual love or sexual abuse</td>
+          <td>Sexual love or abuse</td>
+        </tr>
+        <tr>
+          <td>Erythrophobia</td>
+          <td>erytophobia, ereuthophobia,fear of the color red, or fear of blushing</td>
+          <td>Susigėdyt</td>
+        </tr>
+        <tr>
+          <td>Eurotophobia</td>
+          <td>aversion to female genitals</td>
+          <td>Pamatyt vaginą</td>
+        </tr>
+        <tr>
+          <td>Frigophobia</td>
+          <td>fear of becoming too cold</td>
+          <td>5min šaltai</td>
+        </tr>
+        <tr>
+          <td>Galeophobia</td>
+          <td>fear of sharks</td>
+          <td>Paliest ryklį</td>
+        </tr>
+        <tr>
+          <td>Gamophobia</td>
+          <td>fear of marriage</td>
+          <td>Susituokti</td>
+        </tr>
+        <tr>
+          <td>Gelotophobia</td>
+          <td>fear of being laughed at</td>
+          <td>Kiti pasijuokia iš tavęs</td>
+        </tr>
+        <tr>
+          <td>Gephyrophobia</td>
+          <td>fear of bridges</td>
+          <td>Pereit tiltą</td>
+        </tr>
+        <tr>
+          <td>Genuphobia</td>
+          <td>fear of knees or the act of kneeling</td>
+          <td>Priklaupt</td>
+        </tr>
+        <tr>
+          <td>Gerascophobia</td>
+          <td>fear of growing old or aging</td>
+          <td>Pasakyt savo amžių</td>
+        </tr>
+        <tr>
+          <td>Gerontophobia</td>
+          <td>fear of growing old, or a hatred or fear of the elderly</td>
+          <td>Maloniai pasisveikint su senoliu</td>
+        </tr>
+        <tr>
+          <td>Globophobia</td>
+          <td>fear of balloons</td>
+          <td>Susprogdint balioną</td>
+        </tr>
+        <tr>
+          <td>Glossophobia</td>
+          <td>fear of speaking in public or of trying to speak</td>
+          <td>Surikti viešoje vietoje</td>
+        </tr>
+        <tr>
+          <td>Gymnophobia</td>
+          <td>fear of nudity</td>
+          <td>Būt nuogam prieš žmogų</td>
+        </tr>
+        <tr>
+          <td>Gynophobia</td>
+          <td>fear of adult women</td>
+          <td>Pasisveikint su 35+ moterim</td>
+        </tr>
+        <tr>
+          <td>Halitophobia</td>
+          <td>fear of bad breath</td>
+          <td>Nesivalyt dantų</td>
+        </tr>
+        <tr>
+          <td>Heptadekaphobia</td>
+          <td>heptadecaphobia,fear of the number 17</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Hedonophobia</td>
+          <td>fear of obtaining pleasure</td>
+          <td>Pasimėgaut</td>
+        </tr>
+        <tr>
+          <td>Heliophobia</td>
+          <td>fear of the sun or sunlight</td>
+          <td>Pasidegint</td>
+        </tr>
+        <tr>
+          <td>Helminthophobia</td>
+          <td>scoleciphobia, vermiphobia,fear of worms, a zoophobia</td>
+          <td>Paliest kirminą</td>
+        </tr>
+        <tr>
+          <td>Hemophobia</td>
+          <td>haemophobia,fear of blood</td>
+          <td>Paliest kraują</td>
+        </tr>
+        <tr>
+          <td>Herpetophobia</td>
+          <td>fear/dislike of reptiles or amphibians, a zoophobia</td>
+          <td>Paliest driežą</td>
+        </tr>
+        <tr>
+          <td>Hexakosioihex..</td>
+          <td>fear of the number 666</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Hodophobia</td>
+          <td>fear of travel</td>
+          <td>Keliaut</td>
+        </tr>
+        <tr>
+          <td>Hypnophobia</td>
+          <td>somniphobia,fear of sleep or nightmares</td>
+          <td>Užmigt</td>
+        </tr>
+        <tr>
+          <td>Hypochondria</td>
+          <td>fear of illness</td>
+          <td>Susirgt</td>
+        </tr>
+        <tr>
+          <td>Ichthyophobia</td>
+          <td>fear of fish, including fear of eating fish, or fear of dead fish, a zoophobia</td>
+          <td>Paliest žuvį</td>
+        </tr>
+        <tr>
+          <td>Koumpounophobia</td>
+          <td>fear of buttons on clothing</td>
+          <td>Apsirengt drabužį su sagom</td>
+        </tr>
+        <tr>
+          <td>Lilapsophobia</td>
+          <td>fear of tornadoes or hurricanes</td>
+          <td>Pamatyt tornadą</td>
+        </tr>
+        <tr>
+          <td>Lepidopteroph..</td>
+          <td>fear of butterflies and moths, a zoophobia</td>
+          <td>Paliest drugelį/peteliškę</td>
+        </tr>
+        <tr>
+          <td>Mageiricophobia</td>
+          <td>fear of cooking</td>
+          <td>Pagamint</td>
+        </tr>
+        <tr>
+          <td>Masklophobia</td>
+          <td>fear of people in masks, costumes and mascots</td>
+          <td>Pastebėti žmogų su kauke</td>
+        </tr>
+        <tr>
+          <td>Musophobia</td>
+          <td>murophobia, suriphobia,fear/dislike of mice or rats, a zoophobia</td>
+          <td>Paliest pelę/žiurkę</td>
+        </tr>
+        <tr>
+          <td>Mycophobia</td>
+          <td>fear of mushrooms</td>
+          <td>Paliesti grybą</td>
+        </tr>
+        <tr>
+          <td>Myrmecophobia</td>
+          <td>fear of ants, a zoophobia</td>
+          <td>Paliesti skruzdę</td>
+        </tr>
+        <tr>
+          <td>Mysophobia</td>
+          <td>germophobia,fear of germs, contamination or dirt</td>
+          <td>Paliesti žemę</td>
+        </tr>
+        <tr>
+          <td>Necrophobia</td>
+          <td>fear of corpses or things associated with death (not to be confused with death anxiety)</td>
+          <td>Pamatyt karkasą</td>
+        </tr>
+        <tr>
+          <td>Negrophobia</td>
+          <td>fear/dislike of black people</td>
+          <td>Pasisveikint</td>
+        </tr>
+        <tr>
+          <td>Neophobia</td>
+          <td>cainophobia, cainotophobia, centophobia, kainolophobia, kainophobia, metathesiophobia, prosophobia,fear of newness, novelty, change or progress</td>
+          <td>Paskaityt naujieną</td>
+        </tr>
+        <tr>
+          <td>Noctiphobia</td>
+          <td>fear of the night</td>
+          <td>Pabūt naktį</td>
+        </tr>
+        <tr>
+          <td>Nomophobia</td>
+          <td>fear of being out of mobile phone contact</td>
+          <td>Išjungt telefoną dienai</td>
+        </tr>
+        <tr>
+          <td>Nosocomephobia</td>
+          <td>fear of hospitals</td>
+          <td>Apsilankyt ligoninėje</td>
+        </tr>
+        <tr>
+          <td>Nostophobia</td>
+          <td>ecophobia,fear of returning home</td>
+          <td>Grįžti namo</td>
+        </tr>
+        <tr>
+          <td>Numerophobia</td>
+          <td>fear of numbers</td>
+          <td>Suskaičiuot iki 10 garsiai</td>
+        </tr>
+        <tr>
+          <td>Obesophobia</td>
+          <td>fear of gaining weight</td>
+          <td>Suvalgyt 2x porcijų</td>
+        </tr>
+        <tr>
+          <td>Ommetaphobia</td>
+          <td>fear of eyes</td>
+          <td>Pažiūrėt kažkam į akis iš arti</td>
+        </tr>
+        <tr>
+          <td>Oneirophobia</td>
+          <td>fear of dreams</td>
+          <td>Susapnuot</td>
+        </tr>
+        <tr>
+          <td>Ophidiophobia</td>
+          <td>fear/dislike of snakes, a zoophobia</td>
+          <td>Paliesti gyvatę</td>
+        </tr>
+        <tr>
+          <td>Ophthalmophobia</td>
+          <td>fear of being stared at</td>
+          <td>Paprašyt kad į tave pažiūrėtų</td>
+        </tr>
+        <tr>
+          <td>Ornithophobia</td>
+          <td>fear/dislike of birds, a zoophobia</td>
+          <td>Paliest paukštį</td>
+        </tr>
+        <tr>
+          <td>Osmophobia</td>
+          <td>olfactophobia,fear of odors</td>
+          <td>Pauostyt pažastį</td>
+        </tr>
+        <tr>
+          <td>Ostraconophobia</td>
+          <td>fear/dislike of shellfish, a zoophobia</td>
+          <td>Paliest jūrų gėrybę</td>
+        </tr>
+        <tr>
+          <td>Pedophobia</td>
+          <td>paedophobia, pediaphobia,fear of babies and children</td>
+          <td>Pamatyt kūdikį</td>
+        </tr>
+        <tr>
+          <td>Phagophobia</td>
+          <td>fear of swallowing</td>
+          <td>Nuryt tabletę be skysčio</td>
+        </tr>
+        <tr>
+          <td>Phallophobia</td>
+          <td>fear of erections or penises</td>
+          <td>Pamatyt penį</td>
+        </tr>
+        <tr>
+          <td>Pharmacophobia</td>
+          <td>fear of medications</td>
+          <td>Išgert vaistų</td>
+        </tr>
+        <tr>
+          <td>Phasmophobia</td>
+          <td>fear of ghosts or phantoms</td>
+          <td>Apsilankyt apleistoj patalpoj</td>
+        </tr>
+        <tr>
+          <td>Philophobia</td>
+          <td>fear of love</td>
+          <td>Šauk komplimentą</td>
+        </tr>
+        <tr>
+          <td>Phyllophobia</td>
+          <td>fear of leaves</td>
+          <td>Paliesti lapus</td>
+        </tr>
+        <tr>
+          <td>Phobophobia</td>
+          <td>fear of fear itself or of having a phobia</td>
+          <td>Pasakyk ko bijai</td>
+        </tr>
+        <tr>
+          <td>Pogonophobia</td>
+          <td>fear of beards</td>
+          <td>Paglostyt barzdą</td>
+        </tr>
+        <tr>
+          <td>Pornophobia</td>
+          <td>dislike or fear of pornography</td>
+          <td>Pamatyt porno</td>
+        </tr>
+        <tr>
+          <td>Porphyrophobia</td>
+          <td>fear of the color purple</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Pteromerhanop..</td>
+          <td>fear of flying</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Pyrophobia</td>
+          <td>fear of fire</td>
+          <td>Sukurt ugnį</td>
+        </tr>
+        <tr>
+          <td>Radiophobia</td>
+          <td>fear of radioactivity or X-rays</td>
+          <td>Pasidaryt XRAYJŲ</td>
+        </tr>
+        <tr>
+          <td>Siderodromoph..</td>
+          <td>fear of trains or railroads</td>
+          <td>Įlipt į traukinį</td>
+        </tr>
+        <tr>
+          <td>Spheksophobia</td>
+          <td>fear of wasps, a zoophobia</td>
+          <td>Paliest širšę</td>
+        </tr>
+        <tr>
+          <td>Submechanopho..</td>
+          <td>fear of partially or fully submerged man-made objects</td>
+          <td>Paliest žmogaus sukurtą objektą vandeny</td>
+        </tr>
+        <tr>
+          <td>Taphophobia</td>
+          <td>taphephobia,fear of graves, or fear of being placed in a grave while still alive</td>
+          <td>Būk dalinai užkastas</td>
+        </tr>
+        <tr>
+          <td>Technophobia</td>
+          <td>fear of advanced technology (see also Luddite)</td>
+          <td>Pabendraut su ChatGPT</td>
+        </tr>
+        <tr>
+          <td>Telephone pho..</td>
+          <td>fear or reluctance of making or taking telephone calls</td>
+          <td>Paskambint ir pakalbėt</td>
+        </tr>
+        <tr>
+          <td>Teratophobia</td>
+          <td>fear of giving birth to a monster or a disfigured foetus</td>
+          <td>Pagimdyt</td>
+        </tr>
+        <tr>
+          <td>Tetraphobia</td>
+          <td>fear of the number 4</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Thalassophobia</td>
+          <td>fear of the sea, or fear of being in the ocean</td>
+          <td>Įlipt į jūrą</td>
+        </tr>
+        <tr>
+          <td>Thanatophobia</td>
+          <td>fear of dying, a synonym of death anxiety</td>
+          <td>Mirt</td>
+        </tr>
+        <tr>
+          <td>Thermophobia</td>
+          <td>fear of intolerance to high temperatures</td>
+          <td>Užgesint degtuką</td>
+        </tr>
+        <tr>
+          <td>Tokophobia</td>
+          <td>fear of childbirth or pregnancy</td>
+          <td>Būt nėščiam</td>
+        </tr>
+        <tr>
+          <td>Tomophobia</td>
+          <td>fear of invasive medical procedure</td>
+          <td>Turėt operaciją</td>
+        </tr>
+        <tr>
+          <td>Toxiphobia</td>
+          <td>fear of being poisoned</td>
+          <td>Apsinuodyt</td>
+        </tr>
+        <tr>
+          <td>Traumatophobia</td>
+          <td>a synonym for injury phobia: fear of having an injury</td>
+          <td>Susižeist</td>
+        </tr>
+        <tr>
+          <td>Trichophobia</td>
+          <td>delusional fear of something in the roots of the hair that stops it from growing, or fear of hair loss</td>
+          <td>Praplikt</td>
+        </tr>
+        <tr>
+          <td>Triskaidekaph..</td>
+          <td>terdekaphobia,fear of the number 13</td>
+          <td>*</td>
+        </tr>
+        <tr>
+          <td>Trypophobia</td>
+          <td>fear of holes or textures with a pattern of holes</td>
+          <td>Kišt pirštą į skylę</td>
+        </tr>
+        <tr>
+          <td>Veloxrotaphobia</td>
+          <td>fear of roller coasters</td>
+          <td>Pavažinėt linksmaisiais kalneliais</td>
+        </tr>
+        <tr>
+          <td>Xanthophobia</td>
+          <td>fear of the color yellow</td>
+          <td>*</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      const progressCookie = "progress";
+      const filterCookie = "filter";
+
+      function update() {
+        let filter = sessionStorage.getItem(filterCookie);
+        let rows = document.getElementById("myTable").getElementsByTagName("tr");
+        let score = 0;
+        for (let i = 0; i < rows.length; ++i) {
+          if (filter == "all" || (sessionStorage.getItem(progressCookie)[i] == 'X' && filter == "done") || ((sessionStorage.getItem(progressCookie)[i] == 'O' && filter == "todo"))) rows[i].style.display = "";
+          else rows[i].style.display = "none";
+          if (sessionStorage.getItem(progressCookie)[i] == 'X') {
+            //rows[i].bgColor = "#71f571";
+            rows[i].className = "bg-success";
+            ++score;
+          } else {
+            //rows[i].bgColor = "#f57971";
+            rows[i].className = "bg-danger";
+          }
+        }
+        document.getElementById("score").innerHTML = score.toString();
+      }
+
+      function invertRow(id) {
+        let data = sessionStorage.getItem(progressCookie);
+        if (data.charAt(id) == "X") data = data.substring(0, id) + "O" + data.substring(id + 1, data.length);
+        else data = data.substring(0, id) + "X" + data.substring(id + 1, data.length);
+        sessionStorage.setItem(progressCookie, data);
+      }
+      // Set initial cookies if not set
+      if (sessionStorage.getItem(progressCookie) == null) {
+        sessionStorage.setItem(progressCookie, "O".repeat(document.getElementById("myTable").getElementsByTagName("tr").length));
+      }
+      if (sessionStorage.getItem(filterCookie) == null) {
+        sessionStorage.setItem(filterCookie, "all");
+      }
+      // Set ids
+      let rows = document.getElementById("myTable").getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; ++i) {
+        rows[i].id = i.toString();
+      }
+      // Set onclicks
+      $('#myTable').on('click', 'tr', function() {
+        invertRow(parseInt(this.id));
+        update();
+      });
+      update();
+    </script>
+  </body>
+</html>
