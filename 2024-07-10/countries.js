@@ -16,4 +16,8 @@ COUNTRIES =
     KOR: {fillKey: 'visited'},
     ISL: {fillKey: 'visited'},
     NLD: {fillKey: 'visited'},
+    SVK: {fillKey: 'visited'},
+    CHE: {fillKey: 'visited'},
+    FRA: {fillKey: 'visited'},
+    BEL: {fillKey: 'visited'},
 }
